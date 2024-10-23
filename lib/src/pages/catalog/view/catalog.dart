@@ -47,10 +47,21 @@ class _CatalogPageState extends State<CatalogPage> {
       name: 'Item 4',
       description: 'Description for Item 4',
     ),
+    CatalogItem(
+      imageUrl: 'https://via.placeholder.com/150',
+      name: 'Item 5',
+      description: 'Description for Item 5',
+    ),
+    CatalogItem(
+      imageUrl: 'https://via.placeholder.com/150',
+      name: 'Item 6',
+      description: 'Description for Item 6',
+    ),
     // Add more items as needed
   ];
 
   String searchQuery = '';
+  int? selectedIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -127,19 +138,61 @@ class _CatalogPageState extends State<CatalogPage> {
               ],
             ),
             const SizedBox(height: 20),
-            // Catalog Grid
             Expanded(
               child: GridView.builder(
                 itemCount: filteredItems.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, // Two columns
+                  crossAxisCount: 2,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
-                  childAspectRatio: 3 / 4, // Adjust as needed
+                  childAspectRatio: 3 / 4,
                 ),
                 itemBuilder: (context, index) {
-                  return CatalogItemCard(item: filteredItems[index]);
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedIndex = index;
+                      });
+                    },
+                    child: CatalogItemCard(
+                      item: filteredItems[index],
+                      isSelected: selectedIndex == index,
+                    ),
+                  );
                 },
+              ),
+            ),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 110.0),
+              child: SizedBox(
+                width: double.infinity,
+                height: 60,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Navigator.push(
+                    //   context,
+                    //   PageTransition(
+                    //     type: PageTransitionType.leftToRight,
+                    //     child: const CatalogPage(),
+                    //     duration: const Duration(milliseconds: 300),
+                    //   ),
+                    // );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xff091057),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: const Text(
+                    'PROCEED WITH SELECTION',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
               ),
             ),
           ],

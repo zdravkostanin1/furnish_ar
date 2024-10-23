@@ -3,14 +3,18 @@ import 'package:furnish_ar/src/models/catalog_item.dart';
 
 class CatalogItemCard extends StatelessWidget {
   final CatalogItem item;
+  final bool isSelected;
 
-  const CatalogItemCard({super.key, required this.item});
+  const CatalogItemCard({super.key, required this.item, this.isSelected = false});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
+        border: isSelected
+            ? Border.all(color: Colors.red, width: 3.0)
+            : Border.all(color: Colors.transparent),
         borderRadius: BorderRadius.circular(8.0),
         boxShadow: [
           BoxShadow(
