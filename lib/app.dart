@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:furnish_ar/src/pages/welcome.dart';
+import 'package:furnish_ar/src/pages/welcome/view/welcome.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

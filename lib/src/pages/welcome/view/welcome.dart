@@ -1,7 +1,8 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:furnish_ar/src/pages/catalog/view/catalog.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'catalog/view/catalog.dart';
+import 'package:page_transition/page_transition.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -59,9 +60,13 @@ class WelcomePage extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const CatalogPage()));
+                    context,
+                    PageTransition(
+                      type: PageTransitionType.leftToRight,
+                      child: const CatalogPage(),
+                      duration: const Duration(milliseconds: 300),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
