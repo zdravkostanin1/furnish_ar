@@ -28,36 +28,57 @@ class CatalogPage extends StatefulWidget {
 class _CatalogPageState extends State<CatalogPage> {
   List<CatalogItem> items = [
     CatalogItem(
-      imageUrl: 'https://via.placeholder.com/150',
-      name: 'Item 1',
-      description: 'Description for Item 1',
+      imagePath: 'assets/images/living_room.jpg',
+      // imageUrl: 'assets/models/sofa/sofa.glb',
+      name: 'Living room',
+      description: 'Comfort and style for your living room.',
     ),
     CatalogItem(
-      imageUrl: 'https://via.placeholder.com/150',
-      name: 'Item 2',
-      description: 'Description for Item 2',
+      imagePath: 'assets/images/bedroom.jpg',
+      name: 'Bedroom',
+      description: 'Everything you need for a cozy bedroom.',
     ),
     CatalogItem(
-      imageUrl: 'https://via.placeholder.com/150',
-      name: 'Item 3',
-      description: 'Description for Item 3',
+      imagePath: 'assets/images/dining_room.jpg',
+      name: 'Dining room',
+      description: 'Perfect pieces for your dining area.',
     ),
     CatalogItem(
-      imageUrl: 'https://via.placeholder.com/150',
-      name: 'Item 4',
-      description: 'Description for Item 4',
+      imagePath: 'assets/images/office_room.jpg',
+      name: 'Office',
+      description: 'Essential items for your workspace.',
     ),
     CatalogItem(
-      imageUrl: 'https://via.placeholder.com/150',
-      name: 'Item 5',
-      description: 'Description for Item 5',
+      imagePath: 'assets/images/outdoor.jpg',
+      name: 'Outdoor',
+      description: 'Stylish and durable furniture for outside.',
     ),
     CatalogItem(
-      imageUrl: 'https://via.placeholder.com/150',
-      name: 'Item 6',
-      description: 'Description for Item 6',
+      imagePath: 'assets/images/kitchen.jpg',
+      name: 'Kitchen',
+      description: 'Functional and trendy pieces for your kitchen.',
     ),
     // Add more items as needed
+    CatalogItem(
+      imagePath: 'assets/images/bathroom.jpg',
+      name: 'Bathroom',
+      description: 'Everything for your bathroom.',
+    ),
+    CatalogItem(
+      imagePath: 'assets/images/entryway_room.jpg',
+      name: 'Entryway',
+      description: 'Welcome essentials for your home’s entrance.',
+    ),
+    CatalogItem(
+      imagePath: 'assets/images/kids_room.jpg',
+      name: 'Kid\'s room',
+      description: 'Fun and safe pieces for children’s rooms.',
+    ),
+    CatalogItem(
+      imagePath: 'assets/images/storage_room.jpg',
+      name: 'Storage room',
+      description: 'Smart solutions to organize your space.',
+    ),
   ];
 
   String searchQuery = '';
@@ -164,7 +185,7 @@ class _CatalogPageState extends State<CatalogPage> {
             ),
             const SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.only(bottom: 110.0),
+              padding: const EdgeInsets.only(bottom: 100.0),
               child: SizedBox(
                 width: double.infinity,
                 height: 60,
@@ -180,7 +201,7 @@ class _CatalogPageState extends State<CatalogPage> {
                     // );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xff091057),
+                    backgroundColor: const Color(0xff091057),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),

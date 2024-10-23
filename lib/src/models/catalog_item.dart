@@ -1,10 +1,10 @@
 class CatalogItem {
-  final String imageUrl;
+  final String imagePath;
   final String name;
   final String description;
 
   CatalogItem({
-    required this.imageUrl,
+    required this.imagePath,
     required this.name,
     required this.description,
   });
