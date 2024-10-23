@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:furnish_ar/src/models/catalog_item.dart';
+import 'package:furnish_ar/src/pages/catalog/widgets/catalog_item_card.dart';
 
 class CatalogApp extends StatelessWidget {
   const CatalogApp({super.key});
@@ -6,26 +8,14 @@ class CatalogApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Catalog Page',
+      title: 'FURNITURE',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: CatalogPage(),
+      home: const CatalogPage(),
       debugShowCheckedModeBanner: false,
     );
   }
-}
-
-class CatalogItem {
-  final String imageUrl;
-  final String name;
-  final String description;
-
-  CatalogItem({
-    required this.imageUrl,
-    required this.name,
-    required this.description,
-  });
 }
 
 class CatalogPage extends StatefulWidget {
@@ -73,7 +63,12 @@ class _CatalogPageState extends State<CatalogPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('FURNITURE', style: TextStyle(fontWeight: FontWeight.bold),),
+        title: const Text(
+          'FURNITURE',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -86,11 +81,11 @@ class _CatalogPageState extends State<CatalogPage> {
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: 'Search...',
-                      prefixIcon: Icon(Icons.search),
+                      prefixIcon: const Icon(Icons.search),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8.0),
                       ),
-                      contentPadding: EdgeInsets.symmetric(vertical: 0.0),
+                      contentPadding: const EdgeInsets.symmetric(vertical: 0.0),
                     ),
                     onChanged: (value) {
                       setState(() {
@@ -108,15 +103,17 @@ class _CatalogPageState extends State<CatalogPage> {
                       context: context,
                       builder: (context) {
                         return Container(
-                          padding: EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(16.0),
                           height: 200,
-                          child: Column(
+                          child: const Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Filter Options',
+                                'Filters',
                                 style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               // Add filter options here
                               // For example, checkboxes, sliders, etc.
@@ -129,12 +126,12 @@ class _CatalogPageState extends State<CatalogPage> {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Catalog Grid
             Expanded(
               child: GridView.builder(
                 itemCount: filteredItems.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, // Two columns
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
@@ -147,67 +144,6 @@ class _CatalogPageState extends State<CatalogPage> {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class CatalogItemCard extends StatelessWidget {
-  final CatalogItem item;
-
-  const CatalogItemCard({Key? key, required this.item}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8.0),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: Offset(0, 3), // changes position of shadow
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Image
-          Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(8.0)),
-              child: Image.network(
-                item.imageUrl,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          // Name and Description
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  item.name,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  item.description,
-                  style: TextStyle(fontSize: 14, color: Colors.grey[600]),
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }

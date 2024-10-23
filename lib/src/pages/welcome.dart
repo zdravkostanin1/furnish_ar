@@ -1,8 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'catalog.dart';
+import 'catalog/view/catalog.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -13,10 +12,20 @@ class WelcomePage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('FURNISH AR', style: GoogleFonts.lacquer(fontSize: 30.0, fontWeight: FontWeight.bold)),
+          Text(
+            'FURNISH AR',
+            style: GoogleFonts.lacquer(
+              fontSize: 30.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           const SizedBox(height: 30.0),
           Padding(
-            padding: const EdgeInsets.only(left: 45.0, right: 45.0, bottom: 10.0),
+            padding: const EdgeInsets.only(
+              left: 45.0,
+              right: 45.0,
+              bottom: 10.0,
+            ),
             child: AnimatedTextKit(
               animatedTexts: [
                 TypewriterAnimatedText(
@@ -39,18 +48,25 @@ class WelcomePage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 40.0, right: 40.0, top: 20.0),
+            padding: const EdgeInsets.only(
+              left: 40.0,
+              right: 40.0,
+              top: 20.0,
+            ),
             child: SizedBox(
               width: double.infinity,
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const CatalogPage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CatalogPage()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(7),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
                 child: const Text(
