@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:furnish_ar/src/models/catalog_item.dart';
-import 'package:furnish_ar/src/pages/catalog/widgets/catalog_item_card.dart';
+import 'package:furnish_ar/src/pages/catalog/widgets/space_item_card.dart';
 import 'package:furnish_ar/src/pages/furniture/view/furniture.dart';
 import 'package:page_transition/page_transition.dart';
 

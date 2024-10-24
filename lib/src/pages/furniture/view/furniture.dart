@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:furnish_ar/src/models/catalog_item.dart';
-import 'package:furnish_ar/src/pages/catalog/widgets/catalog_item_card.dart';
+import 'package:furnish_ar/src/models/model_item.dart';
+import 'package:furnish_ar/src/pages/catalog/widgets/space_item_card.dart';
+import 'package:furnish_ar/src/pages/furniture/widgets/model_item_card.dart';
 
 class FurniturePage extends StatefulWidget {
   final String roomType;
@@ -8,7 +10,7 @@ class FurniturePage extends StatefulWidget {
   const FurniturePage({super.key, required this.roomType});
 
   @override
-  _FurniturePageState createState() => _FurniturePageState();
+  State<StatefulWidget> createState() => _FurniturePageState();
 }
 
 class _FurniturePageState extends State<FurniturePage> {
@@ -16,35 +18,36 @@ class _FurniturePageState extends State<FurniturePage> {
 
   @override
   Widget build(BuildContext context) {
-    List<CatalogItem> furnitureItems = [
-      CatalogItem(
-        imagePath: 'assets/images/office_chair.jpg',
-        name: 'Office Chair',
+    // TODO: Load furniture items here based on the chosen space of home.
+    List<ModelItem> furnitureItems = [
+      ModelItem(
+        modelPath: 'assets/models/sofa/sofa.glb',
+        name: 'Grey sofa',
         description: 'Comfortable and stylish chair for your office.',
       ),
-      CatalogItem(
-        imagePath: 'assets/images/office_desk.jpg',
-        name: 'Office Desk',
-        description: 'Spacious desk for a productive workspace.',
-      ),
-      CatalogItem(
-        imagePath: 'assets/images/office_shelf.jpg',
-        name: 'Office Shelf',
-        description: 'Modern shelf to organize your office.',
-      ),
+      // ModelItem(
+      //   modelPath: 'assets/images/office_desk.jpg',
+      //   name: 'Office Desk',
+      //   description: 'Spacious desk for a productive workspace.',
+      // ),
+      // ModelItem(
+      //   modelPath: 'assets/images/office_shelf.jpg',
+      //   name: 'Office Shelf',
+      //   description: 'Modern shelf to organize your office.',
+      // ),
     ];
 
     // Filter items based on search query
-    List<CatalogItem> filteredItems = furnitureItems
+    List<ModelItem> filteredItems = furnitureItems
         .where((item) =>
-    item.name.toLowerCase().contains(searchQuery.toLowerCase()) ||
-        item.description.toLowerCase().contains(searchQuery.toLowerCase()))
+            item.name.toLowerCase().contains(searchQuery.toLowerCase()) ||
+            item.description.toLowerCase().contains(searchQuery.toLowerCase()))
         .toList();
 
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          '${widget.roomType} Furniture',
+          widget.roomType.toUpperCase(),
           style: const TextStyle(
             fontWeight: FontWeight.bold,
           ),
@@ -110,13 +113,13 @@ class _FurniturePageState extends State<FurniturePage> {
               child: GridView.builder(
                 itemCount: filteredItems.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
+                  crossAxisCount: 2,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
                   childAspectRatio: 3 / 4,
                 ),
                 itemBuilder: (context, index) {
-                  return CatalogItemCard(
+                  return ModelItemCard(
                     item: filteredItems[index],
                     isSelected: false,
                   );
