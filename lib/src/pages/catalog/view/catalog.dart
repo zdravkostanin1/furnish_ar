@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:furnish_ar/src/models/catalog_item.dart';
 import 'package:furnish_ar/src/pages/catalog/widgets/catalog_item_card.dart';
+import 'package:furnish_ar/src/pages/furniture/view/furniture.dart';
+import 'package:page_transition/page_transition.dart';
 
 class CatalogApp extends StatelessWidget {
   const CatalogApp({super.key});
@@ -58,7 +60,6 @@ class _CatalogPageState extends State<CatalogPage> {
       name: 'Kitchen',
       description: 'Functional and trendy pieces for your kitchen.',
     ),
-    // Add more items as needed
     CatalogItem(
       imagePath: 'assets/images/bathroom.jpg',
       name: 'Bathroom',
@@ -87,16 +88,12 @@ class _CatalogPageState extends State<CatalogPage> {
   @override
   Widget build(BuildContext context) {
     // Filter items based on search query
-    List<CatalogItem> filteredItems = items
-        .where((item) =>
-            item.name.toLowerCase().contains(searchQuery.toLowerCase()) ||
-            item.description.toLowerCase().contains(searchQuery.toLowerCase()))
-        .toList();
+    List<CatalogItem> filteredItems = items.where((item) => item.name.toLowerCase().contains(searchQuery.toLowerCase()) || item.description.toLowerCase().contains(searchQuery.toLowerCase())).toList();
 
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'FURNITURE',
+          'CHOOSE SPACE',
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
@@ -106,7 +103,6 @@ class _CatalogPageState extends State<CatalogPage> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // Search Bar and Filter Button
             Row(
               children: [
                 Expanded(
@@ -127,35 +123,34 @@ class _CatalogPageState extends State<CatalogPage> {
                   ),
                 ),
                 const SizedBox(width: 10),
-                IconButton(
-                  icon: const Icon(Icons.filter_list),
-                  onPressed: () {
-                    // Implement filter functionality here
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (context) {
-                        return Container(
-                          padding: const EdgeInsets.all(16.0),
-                          height: 200,
-                          child: const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Filters',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              // Add filter options here
-                              // For example, checkboxes, sliders, etc.
-                            ],
-                          ),
-                        );
-                      },
-                    );
-                  },
-                ),
+                // IconButton(
+                //   icon: const Icon(Icons.filter_list),
+                //   onPressed: () {
+                //     showModalBottomSheet(
+                //       context: context,
+                //       builder: (context) {
+                //         return Container(
+                //           padding: const EdgeInsets.all(16.0),
+                //           height: 200,
+                //           child: const Column(
+                //             crossAxisAlignment: CrossAxisAlignment.start,
+                //             children: [
+                //               Text(
+                //                 'Filters',
+                //                 style: TextStyle(
+                //                   fontSize: 18,
+                //                   fontWeight: FontWeight.bold,
+                //                 ),
+                //               ),
+                //               // Add filter options here
+                //               // For example, checkboxes, sliders, etc.
+                //             ],
+                //           ),
+                //         );
+                //       },
+                //     );
+                //   },
+                // ),
               ],
             ),
             const SizedBox(height: 20),
@@ -190,16 +185,20 @@ class _CatalogPageState extends State<CatalogPage> {
                 width: double.infinity,
                 height: 60,
                 child: ElevatedButton(
-                  onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   PageTransition(
-                    //     type: PageTransitionType.leftToRight,
-                    //     child: const CatalogPage(),
-                    //     duration: const Duration(milliseconds: 300),
-                    //   ),
-                    // );
-                  },
+                  onPressed: selectedIndex != null
+                      ? () {
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.leftToRight,
+                        child: FurniturePage(
+                          roomType: filteredItems[selectedIndex!].name,
+                        ),
+                        duration: const Duration(milliseconds: 300),
+                      ),
+                    );
+                  }
+                      : null,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xff091057),
                     shape: RoundedRectangleBorder(
