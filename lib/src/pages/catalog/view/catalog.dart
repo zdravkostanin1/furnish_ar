@@ -4,22 +4,6 @@ import 'package:furnish_ar/src/pages/catalog/widgets/space_item_card.dart';
 import 'package:furnish_ar/src/pages/furniture/view/furniture.dart';
 import 'package:page_transition/page_transition.dart';
 
-class CatalogApp extends StatelessWidget {
-  const CatalogApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'FURNITURE',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const CatalogPage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
 class CatalogPage extends StatefulWidget {
   const CatalogPage({super.key});
 
@@ -88,7 +72,11 @@ class _CatalogPageState extends State<CatalogPage> {
   @override
   Widget build(BuildContext context) {
     // Filter items based on search query
-    List<CatalogItem> filteredItems = items.where((item) => item.name.toLowerCase().contains(searchQuery.toLowerCase()) || item.description.toLowerCase().contains(searchQuery.toLowerCase())).toList();
+    List<CatalogItem> filteredItems = items
+        .where((item) =>
+            item.name.toLowerCase().contains(searchQuery.toLowerCase()) ||
+            item.description.toLowerCase().contains(searchQuery.toLowerCase()))
+        .toList();
 
     return Scaffold(
       appBar: AppBar(
@@ -185,20 +173,26 @@ class _CatalogPageState extends State<CatalogPage> {
                 width: double.infinity,
                 height: 60,
                 child: ElevatedButton(
-                  onPressed: selectedIndex != null
-                      ? () {
-                    Navigator.push(
-                      context,
-                      PageTransition(
-                        type: PageTransitionType.leftToRight,
-                        child: FurniturePage(
-                          roomType: filteredItems[selectedIndex!].name,
+                  onPressed: () {
+                    if (selectedIndex == null) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('To proceed, you must select a space to furnish. 🛋️'),
                         ),
-                        duration: const Duration(milliseconds: 300),
-                      ),
-                    );
-                  }
-                      : null,
+                      );
+                    } else {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.leftToRight,
+                          child: FurniturePage(
+                            roomType: filteredItems[selectedIndex!].name,
+                          ),
+                          duration: const Duration(milliseconds: 300),
+                        ),
+                      );
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xff091057),
                     shape: RoundedRectangleBorder(

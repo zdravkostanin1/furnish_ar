@@ -13,7 +13,7 @@ class CatalogItemCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         border: isSelected
-            ? Border.all(color: Colors.red, width: 3.0)
+            ? Border.all(color: const Color(0xff091057), width: 3.0)
             : Border.all(color: Colors.transparent),
         borderRadius: BorderRadius.circular(8.0),
         boxShadow: [

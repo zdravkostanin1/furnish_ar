@@ -111,7 +111,7 @@ class _FurniturePageState extends State<FurniturePage> {
               child: GridView.builder(
                 itemCount: filteredItems.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
+                  crossAxisCount: 1,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
                   childAspectRatio: 3 / 4,
