@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:furnish_ar/src/models/catalog_item.dart';
-import 'package:model_viewer_plus/model_viewer_plus.dart';
 
 class CatalogItemCard extends StatelessWidget {
   final CatalogItem item;
@@ -64,17 +63,3 @@ class CatalogItemCard extends StatelessWidget {
     );
   }
 }
-
-// CODE FOR DISPLAYING 3D MODELS
-// Expanded(
-// child: ClipRRect(
-// borderRadius: const BorderRadius.vertical(top: Radius.circular(8.0)),
-// child: ModelViewer(
-// src: item.imageUrl, // Reference to the asset path
-// alt: "A 3D model of ${item.name}",
-// autoRotate: true,
-// cameraControls: true,
-// backgroundColor: Colors.white,
-// ),
-// ),
-// ),

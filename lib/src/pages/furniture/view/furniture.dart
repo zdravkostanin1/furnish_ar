@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:furnish_ar/src/models/catalog_item.dart';
 import 'package:furnish_ar/src/models/model_item.dart';
-import 'package:furnish_ar/src/pages/catalog/widgets/space_item_card.dart';
 import 'package:furnish_ar/src/pages/furniture/widgets/model_item_card.dart';
 
 class FurniturePage extends StatefulWidget {
