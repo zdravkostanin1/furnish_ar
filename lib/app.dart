@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:furnish_ar/src/models/storage.dart';
+import 'package:furnish_ar/src/models/hive_utility.dart';
 import 'package:furnish_ar/src/pages/welcome/view/welcome.dart';
 import 'package:furnish_ar/src/utils/constants.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -48,7 +48,7 @@ Widget introductionWidget() {
     // TODO: Implement
     onDone: () async {
       ///                            boxName,  key,                value
-      await Storage.saveBooleanValue('intro', 'introPassed', true);
+      await HiveUtility.saveBooleanValue('intro', 'introPassed', true);
 
       // bool hasCompletedTutorial = await StorageService().getBooleanValue('tutorialCompleted');
     },
