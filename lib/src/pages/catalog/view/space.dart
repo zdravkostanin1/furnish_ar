@@ -4,14 +4,14 @@ import 'package:furnish_ar/src/pages/catalog/widgets/space_item_card.dart';
 import 'package:furnish_ar/src/pages/furniture/view/furniture.dart';
 import 'package:page_transition/page_transition.dart';
 
-class CatalogPage extends StatefulWidget {
-  const CatalogPage({super.key});
+class SpacePage extends StatefulWidget {
+  const SpacePage({super.key});
 
   @override
-  State<StatefulWidget> createState() => _CatalogPageState();
+  State<StatefulWidget> createState() => _SpacePageState();
 }
 
-class _CatalogPageState extends State<CatalogPage> {
+class _SpacePageState extends State<SpacePage> {
   List<CatalogItem> items = [
     CatalogItem(
       imagePath: 'assets/images/living_room.jpg',
@@ -81,7 +81,7 @@ class _CatalogPageState extends State<CatalogPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'CHOOSE SPACE',
+          'CHOOSE YOUR SPACE',
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:furnish_ar/src/models/hive_utility.dart';
-import 'package:furnish_ar/src/pages/catalog/view/catalog.dart';
+import 'package:furnish_ar/src/pages/welcome/view/welcome.dart';
 import 'package:furnish_ar/src/utils/constants.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:page_transition/page_transition.dart';
@@ -43,7 +43,7 @@ class IntroductionPage extends StatelessWidget {
             context,
             PageTransition(
               type: PageTransitionType.leftToRight,
-              child: const CatalogPage(),
+              child: const WelcomePage(),
               duration: const Duration(milliseconds: 300),
             ),
           );

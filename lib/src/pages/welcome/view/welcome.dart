@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:furnish_ar/src/pages/catalog/view/catalog.dart';
+import 'package:furnish_ar/src/pages/catalog/view/space.dart';
 import 'package:page_transition/page_transition.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -19,7 +19,7 @@ class WelcomePage extends StatelessWidget {
               bottom: 10.0,
             ),
             child: Text(
-              'Let\'s start by choosing from our catalog of furniture.',
+              'Let\'s start by choosing a space of your home that you\'d like to furnish.',
               style: TextStyle(
                 fontSize: 18.0,
               ),
@@ -40,7 +40,7 @@ class WelcomePage extends StatelessWidget {
                     context,
                     PageTransition(
                       type: PageTransitionType.leftToRight,
-                      child: const CatalogPage(),
+                      child: const SpacePage(),
                       duration: const Duration(milliseconds: 300),
                     ),
                   );
@@ -52,7 +52,7 @@ class WelcomePage extends StatelessWidget {
                   ),
                 ),
                 child: const Text(
-                  'GO TO CATALOG',
+                  'CHOOSE A SPACE',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
