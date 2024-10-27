@@ -4,8 +4,9 @@ import 'package:furnish_ar/src/pages/furniture/widgets/model_item_card.dart';
 
 class FurniturePage extends StatefulWidget {
   final String roomType;
+  final List<ModelItem> items;
 
-  const FurniturePage({super.key, required this.roomType});
+  const FurniturePage({super.key, required this.roomType, required this.items});
 
   @override
   State<StatefulWidget> createState() => _FurniturePageState();
@@ -17,41 +18,9 @@ class _FurniturePageState extends State<FurniturePage> {
   @override
   Widget build(BuildContext context) {
     // TODO: Load furniture items here based on the chosen space of home.
-    List<ModelItem> sofas = [
-      ModelItem(
-        modelPath: 'assets/models/sofas/sofa.glb',
-        name: 'Grey sofa',
-        description: 'A comfortable and stylish grey sofa for your living room.',
-      ),
-      ModelItem(
-        modelPath: 'assets/models/sofas/sofa_48.glb',
-        name: 'Light-grey sofa',
-        description: 'A comfortable and stylish light-grey sofa for your living room.',
-      ),
-      ModelItem(
-        modelPath: 'assets/models/sofas/sofa_49.glb',
-        name: 'Black sofa',
-        description: 'A comfortable and stylish complete-black sofa for your living room.',
-      ),
-      ModelItem(
-        modelPath: 'assets/models/sofas/sofa_single.glb',
-        name: 'Chair-sofa',
-        description: 'A different type of sofa for your living room.',
-      ),
-      ModelItem(
-        modelPath: 'assets/models/sofas/modern__sofa.glb',
-        name: 'White sofa',
-        description: 'A comfortable and vibrant sofa for your living room.',
-      ),
-      ModelItem(
-        modelPath: 'assets/models/sofas/sofa_-_ikea_nockeby.glb',
-        name: 'Blue sofa',
-        description: 'A comfortable and vibrant sofa for your living room.',
-      ),
-    ];
 
     // Filter items based on search query
-    List<ModelItem> filteredItems = sofas
+    List<ModelItem> filteredItems = widget.items
         .where((item) =>
             item.name.toLowerCase().contains(searchQuery.toLowerCase()) ||
             item.description.toLowerCase().contains(searchQuery.toLowerCase()))

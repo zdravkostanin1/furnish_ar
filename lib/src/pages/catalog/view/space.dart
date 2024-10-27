@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:furnish_ar/src/models/catalog_item.dart';
+import 'package:furnish_ar/src/models/model_item.dart';
 import 'package:furnish_ar/src/pages/catalog/widgets/space_item_card.dart';
 import 'package:furnish_ar/src/pages/furniture/view/furniture.dart';
+import 'package:furnish_ar/src/utils/constants.dart';
 import 'package:page_transition/page_transition.dart';
 
 class SpacePage extends StatefulWidget {
@@ -68,6 +70,47 @@ class _SpacePageState extends State<SpacePage> {
 
   String searchQuery = '';
   int? selectedIndex;
+
+  List<ModelItem> _getSpecificFurniture(List<CatalogItem> filteredItems) {
+    final selectedRoomType = filteredItems[selectedIndex!].name;
+    List<ModelItem> selectedItems;
+
+    switch (selectedRoomType) {
+      case 'Living room':
+        selectedItems = livingRoomItems;
+        break;
+      case 'Bedroom':
+        selectedItems = bedroomItems;
+        break;
+      case 'Dining room':
+        selectedItems = diningRoomItems;
+        break;
+      case 'Office':
+        selectedItems = officeItems;
+        break;
+      case 'Outdoor':
+        selectedItems = outdoorItems;
+        break;
+      case 'Kitchen':
+        selectedItems = kitchenItems;
+        break;
+      case 'Bathroom':
+        selectedItems = bathroomItems;
+        break;
+      case 'Entryway':
+        selectedItems = entrywayItems;
+        break;
+      case 'Kid\'s room':
+        selectedItems = kidsRoomItems;
+        break;
+      case 'Storage room':
+        selectedItems = storageRoomItems;
+        break;
+      default:
+        selectedItems = [];
+    }
+    return selectedItems;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -187,6 +230,7 @@ class _SpacePageState extends State<SpacePage> {
                           type: PageTransitionType.leftToRight,
                           child: FurniturePage(
                             roomType: filteredItems[selectedIndex!].name,
+                            items: _getSpecificFurniture(filteredItems),
                           ),
                           duration: const Duration(milliseconds: 300),
                         ),
