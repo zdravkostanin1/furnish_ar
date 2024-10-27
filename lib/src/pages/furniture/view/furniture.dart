@@ -17,26 +17,41 @@ class _FurniturePageState extends State<FurniturePage> {
   @override
   Widget build(BuildContext context) {
     // TODO: Load furniture items here based on the chosen space of home.
-    List<ModelItem> furnitureItems = [
+    List<ModelItem> sofas = [
       ModelItem(
-        modelPath: 'assets/models/sofa/sofa.glb',
+        modelPath: 'assets/models/sofas/sofa.glb',
         name: 'Grey sofa',
-        description: 'A comfortable and stylish sofa for your living room.',
+        description: 'A comfortable and stylish grey sofa for your living room.',
       ),
-      // ModelItem(
-      //   modelPath: 'assets/images/office_desk.jpg',
-      //   name: 'Office Desk',
-      //   description: 'Spacious desk for a productive workspace.',
-      // ),
-      // ModelItem(
-      //   modelPath: 'assets/images/office_shelf.jpg',
-      //   name: 'Office Shelf',
-      //   description: 'Modern shelf to organize your office.',
-      // ),
+      ModelItem(
+        modelPath: 'assets/models/sofas/sofa_48.glb',
+        name: 'Grey sofas',
+        description: 'A comfortable and stylish sofas for your living room.',
+      ),
+      ModelItem(
+        modelPath: 'assets/models/sofas/sofa_49.glb',
+        name: 'Grey sofas',
+        description: 'A comfortable and stylish sofas for your living room.',
+      ),
+      ModelItem(
+        modelPath: 'assets/models/sofas/sofa_single.glb',
+        name: 'Grey sofas',
+        description: 'A comfortable and stylish sofas for your living room.',
+      ),
+      ModelItem(
+        modelPath: 'assets/models/sofas/modern__sofa.glb',
+        name: 'Grey sofas',
+        description: 'A comfortable and stylish sofas for your living room.',
+      ),
+      ModelItem(
+        modelPath: 'assets/models/sofas/sofa_-_ikea_nockeby.glb',
+        name: 'Grey sofas',
+        description: 'A comfortable and stylish sofas for your living room.',
+      ),
     ];
 
     // Filter items based on search query
-    List<ModelItem> filteredItems = furnitureItems
+    List<ModelItem> filteredItems = sofas
         .where((item) =>
             item.name.toLowerCase().contains(searchQuery.toLowerCase()) ||
             item.description.toLowerCase().contains(searchQuery.toLowerCase()))
