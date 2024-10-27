@@ -10,5 +10,7 @@ Future<void> main() async {
 
   final bool hasPassedIntro = await HiveUtility.getBooleanValue('intro', 'introPassed');
 
-  runApp(hasPassedIntro ? const App() : const IntroductionPage());
+  runApp(
+    hasPassedIntro ? const App() : const MaterialApp(home: IntroductionPage(), debugShowCheckedModeBanner: false),
+  );
 }
