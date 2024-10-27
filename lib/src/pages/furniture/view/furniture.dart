@@ -21,7 +21,7 @@ class _FurniturePageState extends State<FurniturePage> {
       ModelItem(
         modelPath: 'assets/models/sofa/sofa.glb',
         name: 'Grey sofa',
-        description: 'Comfortable and stylish chair for your office.',
+        description: 'A comfortable and stylish sofa for your living room.',
       ),
       // ModelItem(
       //   modelPath: 'assets/images/office_desk.jpg',
