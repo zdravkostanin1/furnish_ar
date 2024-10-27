@@ -1,7 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:furnish_ar/src/pages/catalog/view/catalog.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -13,39 +12,18 @@ class WelcomePage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            'FURNISH AR',
-            style: GoogleFonts.lacquer(
-              fontSize: 30.0,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
           const SizedBox(height: 30.0),
-          Padding(
-            padding: const EdgeInsets.only(
+          const Padding(
+            padding: EdgeInsets.only(
               left: 45.0,
               right: 45.0,
               bottom: 10.0,
             ),
-            child: AnimatedTextKit(
-              animatedTexts: [
-                TypewriterAnimatedText(
-                  textStyle: const TextStyle(
-                    fontSize: 20.0,
-                    // fontWeight: FontWeight.bold,
-                  ),
-                  'Welcome! 🎉',
-                  speed: const Duration(milliseconds: 80),
-                ),
-                TypewriterAnimatedText(
-                  'Let\'s start by choosing from our catalog of furniture.',
-                  textStyle: const TextStyle(
-                    fontSize: 18.0,
-                  ),
-                  speed: const Duration(milliseconds: 100),
-                ),
-              ],
-              totalRepeatCount: 1,
+            child: Text(
+              'Let\'s start by choosing from our catalog of furniture.',
+              style: TextStyle(
+                fontSize: 18.0,
+              ),
             ),
           ),
           Padding(
