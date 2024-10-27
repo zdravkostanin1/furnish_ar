@@ -25,28 +25,28 @@ class _FurniturePageState extends State<FurniturePage> {
       ),
       ModelItem(
         modelPath: 'assets/models/sofas/sofa_48.glb',
-        name: 'Grey sofas',
-        description: 'A comfortable and stylish sofas for your living room.',
+        name: 'Light-grey sofa',
+        description: 'A comfortable and stylish light-grey sofa for your living room.',
       ),
       ModelItem(
         modelPath: 'assets/models/sofas/sofa_49.glb',
-        name: 'Grey sofas',
-        description: 'A comfortable and stylish sofas for your living room.',
+        name: 'Black sofa',
+        description: 'A comfortable and stylish complete-black sofa for your living room.',
       ),
       ModelItem(
         modelPath: 'assets/models/sofas/sofa_single.glb',
-        name: 'Grey sofas',
-        description: 'A comfortable and stylish sofas for your living room.',
+        name: 'Chair-sofa',
+        description: 'A different type of sofa for your living room.',
       ),
       ModelItem(
         modelPath: 'assets/models/sofas/modern__sofa.glb',
-        name: 'Grey sofas',
-        description: 'A comfortable and stylish sofas for your living room.',
+        name: 'White sofa',
+        description: 'A comfortable and vibrant sofa for your living room.',
       ),
       ModelItem(
         modelPath: 'assets/models/sofas/sofa_-_ikea_nockeby.glb',
-        name: 'Grey sofas',
-        description: 'A comfortable and stylish sofas for your living room.',
+        name: 'Blue sofa',
+        description: 'A comfortable and vibrant sofa for your living room.',
       ),
     ];
 
@@ -128,7 +128,7 @@ class _FurniturePageState extends State<FurniturePage> {
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 1,
                   crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
+                  mainAxisSpacing: 20,
                   childAspectRatio: 3 / 4,
                 ),
                 itemBuilder: (context, index) {
