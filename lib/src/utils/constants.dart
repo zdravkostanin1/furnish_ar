@@ -117,7 +117,38 @@ final List<ModelItem> bedroomItems = [
     description: 'A bedroom set with frames for your bedroom.',
   ),
 ];
-final List<ModelItem> diningRoomItems = [];
+final List<ModelItem> diningRoomItems = [
+  ModelItem(
+    modelPath: 'assets/models/dining_room/tables/modern_dining_table.glb',
+    name: 'Modern dining table',
+    description: 'A dining table with a modern design for your dining room.',
+  ),
+  ModelItem(
+    modelPath: 'assets/models/dining_room/tables/simple_dining_table.glb',
+    name: 'Simple dining table',
+    description: 'A simple dining table for your dining room.',
+  ),
+  ModelItem(
+    modelPath: 'assets/models/dining_room/chairs/chair.glb',
+    name: 'Simple dining chair',
+    description: 'A simple dining chair for your dining room.',
+  ),
+  ModelItem(
+    modelPath: 'assets/models/dining_room/chairs/dining_chair.glb',
+    name: 'Grey dining chair',
+    description: 'A simple and stylish grey chair for your dining room.',
+  ),
+  ModelItem(
+    modelPath: 'assets/models/dining_room/chairs/merax_dining_chair_leisure_padded_chair.glb',
+    name: 'White dining chair',
+    description: 'A simple white chair for your dining room.',
+  ),
+  ModelItem(
+    modelPath: 'assets/models/dining_room/chairs/modern_dining_chair.glb',
+    name: 'Premium white chair',
+    description: 'A premium white chair for your dining room.',
+  ),
+];
 final List<ModelItem> officeItems = [];
 final List<ModelItem> outdoorItems = [];
 final List<ModelItem> kitchenItems = [];

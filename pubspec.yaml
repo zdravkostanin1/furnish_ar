@@ -77,6 +77,9 @@ flutter:
     - assets/models/living_room/sofas/
     - assets/models/living_room/coffee_tables/
     - assets/models/bedroom/
+    - assets/models/dining_room/tables/
+    - assets/models/dining_room/
+    - assets/models/dining_room/chairs/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
