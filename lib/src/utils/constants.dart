@@ -95,7 +95,28 @@ final List<ModelItem> livingRoomItems = [
     description: 'A storage coffee table with loads of space for your living room.',
   ),
 ];
-final List<ModelItem> bedroomItems = [];
+final List<ModelItem> bedroomItems = [
+  ModelItem(
+    modelPath: 'assets/models/bedroom/bed_01.glb',
+    name: 'Wooden & white bedroom set',
+    description: 'A wooden and white bedroom set for your bedroom.',
+  ),
+  ModelItem(
+    modelPath: 'assets/models/bedroom/bed_06.glb',
+    name: 'Blue bedroom set',
+    description: 'A stylish blue bedroom set for your bedroom.',
+  ),
+  ModelItem(
+    modelPath: 'assets/models/bedroom/bed_07.glb',
+    name: 'Elegant bedroom set',
+    description: 'An elegant bedroom set for your bedroom.',
+  ),
+  ModelItem(
+    modelPath: 'assets/models/bedroom/unseen_fancy_bed.glb',
+    name: 'Bedroom set with frames',
+    description: 'A bedroom set with frames for your bedroom.',
+  ),
+];
 final List<ModelItem> diningRoomItems = [];
 final List<ModelItem> officeItems = [];
 final List<ModelItem> outdoorItems = [];
