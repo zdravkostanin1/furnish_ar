@@ -46,6 +46,7 @@ class _FurniturePageState extends State<FurniturePage> {
 
   @override
   Widget build(BuildContext context) {
+    // TODO: Implement for all types of spaces (filters).
     /// Filter items based on search query and selected filter
     List<ModelItem> filteredItems = widget.items.where((item) {
       final matchesSearchQuery = item.name.toLowerCase().contains(searchQuery.toLowerCase()) ||
