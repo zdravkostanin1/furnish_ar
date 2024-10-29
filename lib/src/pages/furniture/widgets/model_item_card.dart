@@ -31,7 +31,8 @@ class ModelItemCard extends StatelessWidget {
         children: [
           Expanded(
             child: ClipRRect(
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(8.0)),
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(8.0)),
               child: ModelViewer(
                 src: item.modelPath,
                 // Reference to the asset path
@@ -62,22 +63,25 @@ class ModelItemCard extends StatelessWidget {
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 2.0, bottom: 8.0),
+            child: SizedBox(
+              width: double.infinity,
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                ),
+                onPressed: () {},
+                child: const Text('TRY'),
+              ),
+            ),
+          )
         ],
       ),
     );
   }
 }
-
-// CODE FOR DISPLAYING 3D MODELS
-// Expanded(
-// child: ClipRRect(
-// borderRadius: const BorderRadius.vertical(top: Radius.circular(8.0)),
-// child: ModelViewer(
-// src: item.imageUrl, // Reference to the asset path
-// alt: "A 3D model of ${item.name}",
-// autoRotate: true,
-// cameraControls: true,
-// backgroundColor: Colors.white,
-// ),
-// ),
-// ),
