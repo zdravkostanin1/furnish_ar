@@ -27,7 +27,7 @@ class _FurniturePageState extends State<FurniturePage> {
     setState(() {
       isLoading = true;
     });
-    await Future.delayed(const Duration(seconds: 1)); /// Simulated loading delay
+    await Future.delayed(const Duration(seconds: 1)); // Simulated loading delay
     setState(() {
       isLoading = false;
     });
@@ -36,27 +36,51 @@ class _FurniturePageState extends State<FurniturePage> {
   void _applyFilter(String? filter) async {
     setState(() {
       selectedFilter = filter;
-      isLoading = true; /// Start loading when filter is applied
+      isLoading = true; // Start loading when filter is applied
     });
-    await Future.delayed(const Duration(seconds: 1)); /// Simulated loading delay
+    await Future.delayed(const Duration(seconds: 1)); // Simulated loading delay
     setState(() {
       isLoading = false;
     });
   }
 
+  // Function to get filters based on room type
+  List<String> _getFiltersForRoom(String roomType) {
+    switch (roomType.toLowerCase()) {
+      case 'living room':
+        return ['Sofa', 'Coffee table', 'Shelves'];
+      case 'bedroom':
+        return ['Bed', 'Nightstand', 'Dresser'];
+      case 'dining room':
+        return ['Dining table', 'Chair'];
+      default:
+        return [];
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement for all types of spaces (filters).
-    /// Filter items based on search query and selected filter
+    List<String> filters = _getFiltersForRoom(widget.roomType);
+
+    // Filter items based on search query and selected filter
     List<ModelItem> filteredItems = widget.items.where((item) {
       final matchesSearchQuery = item.name.toLowerCase().contains(searchQuery.toLowerCase()) ||
           item.description.toLowerCase().contains(searchQuery.toLowerCase());
 
       final matchesFilter = selectedFilter == null ||
-          (selectedFilter == 'chairs' && item.name.contains('chair')) ||
-          (selectedFilter == 'tables' && item.name.contains('table'));
+          (selectedFilter != null && item.name.toLowerCase().contains(selectedFilter!.toLowerCase()));
+
       return matchesSearchQuery && matchesFilter;
     }).toList();
+
+    String noItemsMessage;
+    if (searchQuery.isNotEmpty && filteredItems.isEmpty) {
+      noItemsMessage = 'No items match your search.';
+    } else if (selectedFilter != null && filteredItems.isEmpty) {
+      noItemsMessage = 'No items match your filter.';
+    } else {
+      noItemsMessage = 'No items available.';
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -112,34 +136,31 @@ class _FurniturePageState extends State<FurniturePage> {
                               ),
                               const SizedBox(height: 10),
                               Row(
-                                children: [
-                                  FilterChip(
-                                    label: const Text("Chairs"),
-                                    selectedColor: Colors.blue[200],
-                                    selected: selectedFilter == "chairs",
-                                    onSelected: (selected) {
-                                      setState(() {
-                                        selectedFilter = selected ? "chairs" : null;
-                                      });
-                                      _applyFilter(selected ? "chairs" : null);
-                                      Navigator.pop(context);
-                                    },
-                                  ),
-                                  const SizedBox(width: 10),
-                                  FilterChip(
-                                    label: const Text("Tables"),
-                                    selected: selectedFilter == "tables",
-                                    selectedColor: Colors.blue[100],
-                                    onSelected: (selected) {
-                                      setState(() {
-                                        selectedFilter = selected ? "tables" : null;
-                                      });
-                                      _applyFilter(selected ? "tables" : null);
-                                      Navigator.pop(context);
-                                    },
-                                  ),
-                                ],
+                                children: filters.map((filter) {
+                                  return Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: FilterChip(
+                                      label: Text(filter),
+                                      selected: selectedFilter == filter,
+                                      selectedColor: Colors.blue[200],
+                                      onSelected: (selected) {
+                                        setState(() {
+                                          selectedFilter = selected ? filter : null;
+                                        });
+                                        _applyFilter(selected ? filter : null);
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                  );
+                                }).toList(),
                               ),
+                              if (filters.isEmpty)
+                                const Center(
+                                  child: Text(
+                                    'No filters available for this room.',
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                ),
                             ],
                           ),
                         );
@@ -153,6 +174,13 @@ class _FurniturePageState extends State<FurniturePage> {
             Expanded(
               child: isLoading
                   ? const Center(child: CircularProgressIndicator())
+                  : filteredItems.isEmpty
+                  ? Center(
+                child: Text(
+                  noItemsMessage,
+                  style: const TextStyle(color: Colors.grey, fontSize: 16),
+                ),
+              )
                   : GridView.builder(
                 itemCount: filteredItems.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
