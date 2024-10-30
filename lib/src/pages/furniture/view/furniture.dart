@@ -64,11 +64,14 @@ class _FurniturePageState extends State<FurniturePage> {
 
     // Filter items based on search query and selected filter
     List<ModelItem> filteredItems = widget.items.where((item) {
-      final matchesSearchQuery = item.name.toLowerCase().contains(searchQuery.toLowerCase()) ||
+      final matchesSearchQuery = item.name
+              .toLowerCase()
+              .contains(searchQuery.toLowerCase()) ||
           item.description.toLowerCase().contains(searchQuery.toLowerCase());
 
       final matchesFilter = selectedFilter == null ||
-          (selectedFilter != null && item.name.toLowerCase().contains(selectedFilter!.toLowerCase()));
+          (selectedFilter != null &&
+              item.name.toLowerCase().contains(selectedFilter!.toLowerCase()));
 
       return matchesSearchQuery && matchesFilter;
     }).toList();
@@ -175,27 +178,31 @@ class _FurniturePageState extends State<FurniturePage> {
               child: isLoading
                   ? const Center(child: CircularProgressIndicator())
                   : filteredItems.isEmpty
-                  ? Center(
-                child: Text(
-                  noItemsMessage,
-                  style: const TextStyle(color: Colors.grey, fontSize: 16),
-                ),
-              )
-                  : GridView.builder(
-                itemCount: filteredItems.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 1,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 20,
-                  childAspectRatio: 3 / 4,
-                ),
-                itemBuilder: (context, index) {
-                  return ModelItemCard(
-                    item: filteredItems[index],
-                    isSelected: false,
-                  );
-                },
-              ),
+                      ? Center(
+                          child: Text(
+                            noItemsMessage,
+                            style: const TextStyle(
+                              color: Colors.grey,
+                              fontSize: 16,
+                            ),
+                          ),
+                        )
+                      : GridView.builder(
+                          itemCount: filteredItems.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 1,
+                            crossAxisSpacing: 10,
+                            mainAxisSpacing: 20,
+                            childAspectRatio: 3 / 4,
+                          ),
+                          itemBuilder: (context, index) {
+                            return ModelItemCard(
+                              item: filteredItems[index],
+                              isSelected: false,
+                            );
+                          },
+                        ),
             ),
           ],
         ),
